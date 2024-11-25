@@ -7,13 +7,18 @@
 #define dt  10
 #define btn A3
 #define led 10
+#define extra_led 5  // Nuevo LED en el pin 5
 #define SERVO_PIN 9
 
 // Inicializar LCD I2C
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // Dirección 0x27, 16 columnas y 2 filas
 
 // Variables para el menú y el encoder
-String opciones[] = {"Mover 60º", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5", "Opcion 6", "Opcion 7"};
+String opciones[] = {
+  "Mover 60 Grados", "Opcion 2", "Opcion 3", 
+  "Opcion 4", "Opcion 5", "Opcion 6", 
+  "Opcion 7", "Encender LED 5s", "Parpadeo 50Hz"
+};
 int max_opciones = sizeof(opciones) / sizeof(opciones[0]);
 int state_clk_old;
 int state_btn_old;
@@ -25,6 +30,7 @@ void setup() {
   lcd.begin(16, 2); // Especificar las dimensiones de la pantalla
   lcd.backlight();  // Activar la retroiluminación del LCD
   pinMode(led, OUTPUT);
+  pinMode(extra_led, OUTPUT);  // Nuevo LED
   pinMode(clk, INPUT);
   pinMode(dt, INPUT);
   pinMode(btn, INPUT_PULLUP);
@@ -99,7 +105,13 @@ void run_option() {
       moverServo(45);  // Opción 6: Mover a 45 grados
       break;
     case 6:
-      moverServo(0);  // Opción 7: Mover a 0 grados
+      moverServo(360);  // Opción 7: Mover a 0 grados
+      break;
+    case 7:
+      encenderLED5s();  // Opción 8: Encender LED 5 segundos
+      break;
+    case 8:
+      parpadeo50Hz();  // Opción 9: Parpadeo del LED a 50 Hz
       break;
     default:
       break;
@@ -112,4 +124,20 @@ void moverServo(int angulo) {
   delay(1000);  // Esperar para que el servo complete el movimiento
   myServo.write(0);  // Regresar el servo a la posición inicial (0 grados)
   delay(1000);  // Esperar antes de permitir otro movimiento
+}
+
+void encenderLED5s() {
+  digitalWrite(extra_led, HIGH);  // Encender el LED
+  delay(5000);                    // Esperar 5 segundos
+  digitalWrite(extra_led, LOW);   // Apagar el LED
+}
+
+void parpadeo50Hz() {
+  unsigned long start_time = millis();
+  while (millis() - start_time < 5000) {  // Mantener el parpadeo durante 5 segundos
+    digitalWrite(extra_led, HIGH);
+    delay(1000);  // Encendido durante 10 ms
+    digitalWrite(extra_led, LOW);
+    delay(1000);  // Apagado durante 10 ms
+  }
 }
