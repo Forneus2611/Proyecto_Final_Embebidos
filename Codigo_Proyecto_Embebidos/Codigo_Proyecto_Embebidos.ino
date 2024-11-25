@@ -6,7 +6,6 @@
 #define clk 7
 #define dt  10
 #define btn A3
-#define led 10
 #define extra_led 5  // Nuevo LED en el pin 5
 #define SERVO_PIN 9
 
@@ -15,9 +14,9 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);  // Dirección 0x27, 16 columnas y 2 filas
 
 // Variables para el menú y el encoder
 String opciones[] = {
-  "Mover 60 Grados", "Opcion 2", "Opcion 3", 
-  "Opcion 4", "Opcion 5", "Opcion 6", 
-  "Opcion 7", "Encender LED 5s", "Parpadeo 50Hz"
+  "Mover 60 Grados", "Mover 120 grados", "Mover 180 grados", 
+  "Mover 90 Grados", "Mover 150 grados", "Mover 45 grados", 
+  "Mover 360 Grados", "Encender LED 5s", "Parpadeo 1(s)"
 };
 int max_opciones = sizeof(opciones) / sizeof(opciones[0]);
 int state_clk_old;
@@ -29,7 +28,7 @@ void setup() {
   Serial.begin(9600);
   lcd.begin(16, 2); // Especificar las dimensiones de la pantalla
   lcd.backlight();  // Activar la retroiluminación del LCD
-  pinMode(led, OUTPUT);
+  
   pinMode(extra_led, OUTPUT);  // Nuevo LED
   pinMode(clk, INPUT);
   pinMode(dt, INPUT);
@@ -111,7 +110,7 @@ void run_option() {
       encenderLED5s();  // Opción 8: Encender LED 5 segundos
       break;
     case 8:
-      parpadeo50Hz();  // Opción 9: Parpadeo del LED a 50 Hz
+      parpadeo();  // Opción 9: Parpadeo del LED a 50 Hz
       break;
     default:
       break;
@@ -132,12 +131,12 @@ void encenderLED5s() {
   digitalWrite(extra_led, LOW);   // Apagar el LED
 }
 
-void parpadeo50Hz() {
+void parpadeo() {
   unsigned long start_time = millis();
   while (millis() - start_time < 5000) {  // Mantener el parpadeo durante 5 segundos
     digitalWrite(extra_led, HIGH);
-    delay(1000);  // Encendido durante 10 ms
+    delay(1000);  // Encendido durante 1000 s
     digitalWrite(extra_led, LOW);
-    delay(1000);  // Apagado durante 10 ms
-  }
+    delay(1000);  // Apagado durante 1000 s
+  }
 }
