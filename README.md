@@ -28,4 +28,7 @@ El equipo responsable de este proyecto está conformado por:
 ## 📂 Estructura del Repositorio
 
 El repositorio incluye los siguientes archivos y carpetas:
+- Aplicacion_FreeRTSO
+- Codigo_Proyecto_Embebidos
+- Documentacion
 
