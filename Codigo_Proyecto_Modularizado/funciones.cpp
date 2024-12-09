@@ -95,7 +95,15 @@ void encenderLED5s() {
     delay(5000);
     digitalWrite(extra_led, LOW);
 }
-
+void parpadeo() {
+    unsigned long start_time = millis();
+    while (millis() - start_time < 5000) {
+        digitalWrite(extra_led, HIGH);
+        delay(500);
+        digitalWrite(extra_led, LOW);
+        delay(500);
+    }
+}
 
 
 
