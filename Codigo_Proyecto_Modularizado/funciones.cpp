@@ -83,5 +83,19 @@ void runOption() {
     }
     mostrarMenu();
 }
+void moverServo(int angulo) {
+    myServo.write(angulo);
+    delay(1000);
+    myServo.write(0);
+    delay(1000);
+}
+
+void encenderLED5s() {
+    digitalWrite(extra_led, HIGH);
+    delay(5000);
+    digitalWrite(extra_led, LOW);
+}
+
+
 
 
