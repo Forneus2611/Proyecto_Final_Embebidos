@@ -31,4 +31,5 @@ El repositorio incluye los siguientes archivos y carpetas:
 - Aplicacion_FreeRTSO
 - Codigo_Proyecto_Embebidos
 - Documentacion
-
+## Enlace a simulacion
+https://wokwi.com/projects/415198895396317185
