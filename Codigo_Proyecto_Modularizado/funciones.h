@@ -12,3 +12,11 @@
 #define btn A3
 #define extra_led 5
 #define SERVO_PIN 9
+
+// Declaraciones de variables globales
+extern String opciones[];
+extern int max_opciones;
+extern int state_clk_old;
+extern int state_btn_old;
+extern int count;
+extern Servo myServo;
