@@ -12,6 +12,8 @@
 #define btn A3
 #define extra_led 5
 #define SERVO_PIN 9
+#define BAUDRATE 9600
+#define DELAY_ENCODER 5
 
 // Declaraciones de variables globales
 extern String opciones[];

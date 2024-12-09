@@ -14,7 +14,7 @@ Servo myServo;
 LCDI2C_Generic lcd(0x27, 16, 2); // Pantalla LCD
 
 void inicializarSistema() {
-    Serial.begin(9600);
+    Serial.begin(BAUDRATE);
     lcd.init();
     lcd.backlight();
 
@@ -58,7 +58,7 @@ void encoder() {
         mostrarMenu();
     }
 
-    delay(5);
+    delay(DELAY_ENCODER);
     state_clk_old = state_clk;
 }
 void mostrarMenu() {
