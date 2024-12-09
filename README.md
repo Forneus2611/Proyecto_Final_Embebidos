@@ -1,4 +1,4 @@
-# Máquina de Estados con Menú Interactivo Controlado por Encoder Rotatorio
+# Menú Interactivo Controlado por Encoder Rotatorio
 
 Este proyecto consiste en el diseño, programación y ensamblaje de un menú interactivo (máquina de estados) que permite al usuario navegar a través de diferentes opciones y ejecutar acciones específicas utilizando un encoder rotatorio.
 
