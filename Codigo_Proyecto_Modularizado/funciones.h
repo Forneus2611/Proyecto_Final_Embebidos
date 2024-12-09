@@ -14,6 +14,9 @@
 #define SERVO_PIN 9
 #define BAUDRATE 9600
 #define DELAY_ENCODER 5
+#define DELAY_MSERVO 1000
+#define DELAY_ONLED 5000
+#define DELAY_PARPADEO 500
 
 // Declaraciones de variables globales
 extern String opciones[];

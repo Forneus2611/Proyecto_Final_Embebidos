@@ -85,23 +85,23 @@ void runOption() {
 }
 void moverServo(int angulo) {
     myServo.write(angulo);
-    delay(1000);
+    delay(DELAY_MSERVO);
     myServo.write(0);
-    delay(1000);
+    delay(DELAY_MSERVO);
 }
 
 void encenderLED5s() {
     digitalWrite(extra_led, HIGH);
-    delay(5000);
+    delay(DELAY_ONLED);
     digitalWrite(extra_led, LOW);
 }
 void parpadeo() {
     unsigned long start_time = millis();
     while (millis() - start_time < 5000) {
         digitalWrite(extra_led, HIGH);
-        delay(500);
+        delay(DELAY_PARPADEO);
         digitalWrite(extra_led, LOW);
-        delay(500);
+        delay(DELAY_PARPADEO);
     }
 }
 
