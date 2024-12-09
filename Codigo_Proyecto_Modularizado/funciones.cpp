@@ -69,3 +69,19 @@ void mostrarMenu() {
     lcd.print(opciones[count]);
 }
 
+void runOption() {
+    switch (count) {
+        case 0: moverServo(60); break;
+        case 1: moverServo(120); break;
+        case 2: moverServo(180); break;
+        case 3: moverServo(90); break;
+        case 4: moverServo(150); break;
+        case 5: moverServo(45); break;
+        case 6: moverServo(360); break;
+        case 7: encenderLED5s(); break;
+        case 8: parpadeo(); break;
+    }
+    mostrarMenu();
+}
+
+
