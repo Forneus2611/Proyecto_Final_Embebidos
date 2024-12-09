@@ -29,3 +29,36 @@ void inicializarSistema() {
     state_btn_old = digitalRead(btn);
     mostrarMenu();
 }
+void gestionarMenu() {
+    int state_btn = digitalRead(btn);
+
+    encoder();
+
+    if (state_btn_old == HIGH && state_btn == LOW) {
+        runOption();
+    }
+
+    state_btn_old = state_btn;
+}
+
+void encoder() {
+    int state_clk = digitalRead(clk);
+    int state_dt = digitalRead(dt);
+
+    if (state_clk_old == HIGH && state_clk == LOW) {
+        if (state_dt == LOW) {
+            count--;
+        } else {
+            count++;
+        }
+
+        if (count < 0) count = max_opciones - 1;
+        if (count >= max_opciones) count = 0;
+
+        mostrarMenu();
+    }
+
+    delay(5);
+    state_clk_old = state_clk;
+}
+

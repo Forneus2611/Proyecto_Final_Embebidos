@@ -20,3 +20,14 @@ extern int state_clk_old;
 extern int state_btn_old;
 extern int count;
 extern Servo myServo;
+// Declaración de funciones
+void inicializarSistema();
+void gestionarMenu();
+void encoder();
+void mostrarMenu();
+void runOption();
+void moverServo(int angulo);
+void encenderLED5s();
+void parpadeo();
+
+#endif // FUNCIONES_H
