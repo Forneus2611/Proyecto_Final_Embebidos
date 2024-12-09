@@ -61,4 +61,11 @@ void encoder() {
     delay(5);
     state_clk_old = state_clk;
 }
+void mostrarMenu() {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Menu:");
+    lcd.setCursor(0, 1);
+    lcd.print(opciones[count]);
+}
 
